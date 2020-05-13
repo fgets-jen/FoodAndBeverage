@@ -1,0 +1,144 @@
+{  
+    "version": "2.0.0", 
+    "tasks": [
+        {
+            "label": "Makefile Debug_gcc",
+            "type": "shell",
+            "command": ["mingw32-make"],
+            "args": [
+                "--directory=${fileDirname}/", 
+                "DEBUG=1", 
+                "EXECUTABLE=${fileBasenameNoExtension}Debug"
+            ]
+        },
+        {
+            "label": "Makefile Release_gcc",
+            "type": "shell",
+            "command": ["mingw32-make"],
+            "args": [
+                "--directory=${fileDirname}/", 
+                "DEBUG=0", 
+                "EXECUTABLE=${fileBasenameNoExtension}Release"
+            ]
+        },
+        {
+            "label": "Release",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}Release"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "Debug",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "${file}",
+                "-g3",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}Debug"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "Makefile Debug",
+            "type": "shell",
+            "command": ["del /S *.o"],
+            "dependsOn": [
+                "Makefile Debug_gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+        },
+        {
+            "label": "Makefile Release",
+            "type": "shell",
+            "command": ["del /S *.o"],
+            "dependsOn": [
+                "Makefile Release_gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "Makefile Debug + Execute",
+            "type": "shell",
+            "command": "${fileDirname}/${fileBasenameNoExtension}Debug",
+            "dependsOn": [
+                "Makefile Debug"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "Makefile Release + Execute",
+            "type": "shell",
+            "command": "${fileDirname}/${fileBasenameNoExtension}Release",
+            "dependsOn": [
+                "Makefile Release"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "Debug Execute",
+            "type": "shell",
+            "command": "${fileDirname}/${fileBasenameNoExtension}Debug",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "Release Execute",
+            "type": "shell",
+            "command": "${fileDirname}/${fileBasenameNoExtension}Release",
+            "group": {
+                "kind": "build", 
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+    ]
+}

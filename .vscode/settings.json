@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "stdio.h": "c",
+        "functionsbib.h": "c",
+        "math.h": "c"
+    },
+    "cmake.configureOnOpen": true
+}
