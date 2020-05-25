@@ -22,7 +22,7 @@ unsigned int DrinkSelection()
             
                 if(choice == 0)
                 {
-                    exit(0);
+                    return 1;
                 }
         }
         while(choice > 4);
@@ -47,7 +47,7 @@ int DrinkAmount()
             
                 if(amount == 0)
                 {
-                    exit(0);
+                    return 1;
                 }
         }
         while(amount <= -1);
@@ -66,7 +66,7 @@ switch(selection)
         case 2: sum = 2.00;break;
         case 3: sum = 3.00;break;
         case 4: sum = 3.50;break;
-        default: exit(400);
+        default: return 1;
     }
 
     sum = selection * amount;
@@ -109,10 +109,3 @@ void DrinkOutput(unsigned int amount)
         printf("Bottle %d of %d is ready to take\n",i+1,amount);
     }
 }
-
-
-
-    
-
-
- 

@@ -5,6 +5,7 @@
 int main()
 {
 
+int exit;
 unsigned int selection = DrinkSelection();
 int amount = DrinkAmount();
 float sum = DrinkCalc(selection,amount);
@@ -28,6 +29,9 @@ else
         printf("Process aborted\nPlease take change, if required and restart\n");
     }
 }
+
+printf("Programm ends up here, please press 0 to close\n");
+scanf("%d", &exit);
 
 return 0;
 
